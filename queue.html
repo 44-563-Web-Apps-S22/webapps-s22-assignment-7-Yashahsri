@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <style>
+    .flex-container {
+    display: flex;  flex-direction:row;
+    background-color: rgb(211, 59, 59);
+    }
+
+    .flex-container > div {  /*div children of the flex container*/
+
+        background-color: #f1f1f1; 
+    margin: 10px;  padding: 20px;  font-size: 30px;
+    }
+
+    /* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		flex-direction:column;
+		background-color: rgb(89, 109, 36);
+	  }
+	}
+</style>
+<title>Queue</title>
+</head>
+<body>
+
+    <h1>Yashah Sri Kanneti builds a reversed queue</h1>
+    <input type='text' id="t"><br><br>
+		<div class="flex-container" id="target">
+		  <div class="queue">row item 1</div>   
+		  <div class="queue">row item 2</div>  
+		  <div class="queue">row item 3</div>  
+		</div>
+
+        <p> Press the button to create an new element of type div and then add it to the container.
+		</p>
+		<button onclick="makeNewDiv()">Add value</button>
+        <button onclick="fetchItem()">Fetch</button>
+        <button onclick="zap()">Zap values</button>
+		
+	
+</body>
+
+<script>
+	function makeNewDiv()
+    {
+		/* make the div and its text */
+		let element = document.createElement("div")
+        document.getElementById("t").value
+		element.innerHTML = document.getElementById("t").value;
+		element.className = "queue"
+		/* add it to the container */
+		let container = document.getElementById('target')
+		container.appendChild(element)
+		
+	}
+
+    function fetchItem()
+    {
+        var queueItems= document.getElementsByClassName("queue");
+        a=queueItems.length;
+        if(a>0)
+        { 
+           for (let i = 0; i < a; i++)
+           {
+                queueItems[a - 1].remove(); 
+        
+           }
+        }
+    }
+
+    function zap()
+    {
+        var queueItems = document.getElementsByClassName("queue")
+        var b = queueItems.length;
+        var item = document.getElementById("t").value;
+        for (let i = 0; i < b; i++)
+        {
+            if (item == queueItems[i].innerHTML)
+            {
+                queueItems[i].remove();
+                console.log("We are getting rid of all the elements with that text");
+            }
+        }
+    }
+
+</script>
+</html>
